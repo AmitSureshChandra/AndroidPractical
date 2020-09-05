@@ -1,25 +1,20 @@
 package com.example.ak.androidpract;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link BlankFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- */
 public class BlankFragment extends Fragment {
 
-    private OnFragmentInteractionListener mListener;
+    String TAG = "frag_life_cyle";
 
     public BlankFragment() {
         // Required empty public constructor
@@ -29,46 +24,58 @@ public class BlankFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        Log.d(TAG, "onCreateView: ");
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_blank, container, false);
-    }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+        Log.d(TAG, "onAttach: ");
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate: ");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart: ");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: ");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause: ");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: ");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: ");
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        Log.d(TAG, "onDetach: ");
     }
 }
